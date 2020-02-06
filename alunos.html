@@ -22,6 +22,9 @@
                 background-color: silver;
             }
         </style>
+
+        <script src="jquery-3.4.1.js"></script>
+
     </head>
 
     <body>
@@ -46,7 +49,7 @@
             <br>
 
             <label>Periodo</label>
-            <select>
+            <select id="periodo">
                 <option value="0">-- Selecione --</option>
                 <option value="1">Manhã</option>
                 <option value="2">Tarde</option>
@@ -54,7 +57,7 @@
             </select>
             <br>
 
-            <button onclick="cadastrar()">Cadastrar</button>
+            <button id="btn-cadastrar">Cadastrar</button>
         </fieldset>
 
         <table>
