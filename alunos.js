@@ -87,6 +87,19 @@ $(document).ready(function(){
 
     }); //fim do click
 
+    $("#telefone").keydown(function (ev){
+        console.log(ev);
+
+        if (ev.key.search(/[0-9()-]/g) != -1 || ev.keyCode == 8)
+        {
+            return true;
+        } else {
+            return false;
+        }
+
+        
+    });
+
 }); // fim ready
 
 
