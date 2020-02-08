@@ -21,9 +21,23 @@
             thead {
                 background-color: silver;
             }
+
+            #msg-alert {
+                color: red;
+                border: 1px solid;
+                padding: 6px;
+                margin: 6px 0;
+                display: none;
+            }
+            .erro {
+                color: red;
+                border: 1px solid;
+            }
         </style>
 
         <script src="jquery-3.4.1.js"></script>
+        <script src="jquery.mask.min.js"></script>
+        <script src="alunos.js"></script>
 
     </head>
 
@@ -31,6 +45,9 @@
         <h1>Cadastro de Alunos</h1>
 
         <fieldset>
+
+            <ul id="msg-alert"></ul>
+
             <label>Nome</label>
             <input type="text" id="nome" />
             <br>
@@ -88,7 +105,7 @@
             </tbody>
         </table>
 
-        <script src="alunos.js"></script>
+        
     </body>
 
 </html>

@@ -10,58 +10,84 @@ $(document).ready(function(){
         var telefone = $("#telefone").val();
         var periodo = $("#periodo").val()
         var sexo = $("input[name=sexo]:checked").val();
+        var errado = false;
+
+
+        // limpa msg de erros
+        $("#msg-alert").hide();
+        $("#msg-alert").html("");
+        $("input, select").removeClass("erro");        
+        
 
         if (nome.trim().length < 2)
         {            
-            alert("O campo nome é obrigatorio");
+            $("#msg-alert").append("<li>O campo nome é obrigatorio</li>");
+            $("#msg-alert").fadeIn();
             $("#nome").focus();
-            return false;
+            $("#nome").addClass("erro");
+            errado = true;
         }
 
         if (email == "")
         {
-            alert("O campo email é obrigatorio");
+            $("#msg-alert").append("<li>O campo email é obrigatorio</li>");
+            $("#msg-alert").fadeIn();
             $("#email").focus();
-            return false;
+            $("#email").addClass("erro");
+            errado = true;
         } else 
         {
             var email_regex = /^[0-9a-z\.\_\-]*@[0-9a-z.]*$/gm;
             if (email.search(email_regex) == -1)
             {
-                alert("O formato do email é invalido");
+                $("#msg-alert").append("<li>O formato do email é invalido</li>");
+                $("#msg-alert").fadeIn();
                 $("#email").focus();
-                return false;
+                $("#email").addClass("erro");
+                errado = true;
             }
         }
 
         if (telefone == "")
         {
-            alert("O campo telefone é obrigatorio");
+            $("#msg-alert").append("<li>O campo telefone é obrigatorio</li>");
+            $("#msg-alert").fadeIn();
             $("#telefone").focus();
-            return false;
+            $("#telefone").addClass("erro");
+            errado = true;
         } else 
         {
             var fone_regex = /^\([0-9][0-9]\)[0-9]{4,5}-[0-9]{4}$/gm;
             
             if (telefone.search(fone_regex) == -1)
             {
-                alert("O formato do telefone é invalido");
+                $("#msg-alert").append("<li>O formato do telefone é invalido</li>");
+                $("#msg-alert").fadeIn();
                 $("#telefone").focus();
-                return false;
+                $("#telefone").addClass("erro");
+                errado = true;
             }
 
         }
 
         if (sexo == undefined)
         {
-            alert("O campo sexo é obrigatorio");            
-            return false;
+            $("#msg-alert").append("<li>O campo sexo é obrigatorio</li>");       
+            $("#msg-alert").fadeIn();     
+            errado = true;
         }
 
         if (periodo == 0)
         {
-            alert("O campo periodo é obrigatorio");
+            $("#msg-alert").append("<li>O campo periodo é obrigatorio</li>");
+            $("#msg-alert").fadeIn();
             $("#periodo").focus();
+            $("#periodo").addClass("erro");
+            errado = true;
+        }
+
+        if (errado == true)
+        {
             return false;
         }
 
@@ -87,18 +113,8 @@ $(document).ready(function(){
 
     }); //fim do click
 
-    $("#telefone").keydown(function (ev){
-        console.log(ev);
-
-        if (ev.key.search(/[0-9()-]/g) != -1 || ev.keyCode == 8)
-        {
-            return true;
-        } else {
-            return false;
-        }
-
-        
-    });
+    // Mascara para telefone
+    $("#telefone").mask("(00)90000-0000");
 
 }); // fim ready
 
